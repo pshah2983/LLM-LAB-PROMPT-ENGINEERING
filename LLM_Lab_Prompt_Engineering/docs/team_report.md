@@ -40,22 +40,19 @@ This report documents our investigation into how prompt phrasing, structure, and
 
 ### 3.1 Failure Behaviors Detected
 
-| Failure Type | Frequency | Example |
-|-------------|-----------|---------|
-| Overconfidence | Common | "This will definitely reduce costs by 30%" |
-| Missing Uncertainty | Frequent | No hedging on variable-dependent claims |
-| Over-elaboration | Moderate | 600+ word responses for simple queries |
-| Potential Hallucination | Rare | Specific statistics without sources |
+| Failure Type | Variants Affected | Description |
+|-------------|-------------------|-------------|
+| Over-elaboration | P1, P3, P4, P5 | Responses exceeded 600 words (700-900 tokens) |
+| Missing Uncertainty Language | P2, P3 | No hedging phrases like "may" or "typically" |
+| Overconfidence | P4, P5 | Used absolute language without caveats |
 
 ### 3.2 Detailed Examples
 
-**Example: Overconfidence in P1_direct**
-> *"Always maintain 2 weeks of safety stock"*
+**Example: Over-elaboration in P1_direct (833 tokens)**
+The naive prompt produced a comprehensive but overly verbose response covering every aspect of inventory management.
 
-This claim ignores variability in lead times and demand patterns specific to the user's context.
-
-**Example: Improvement in P4_reasoning_step**
-> *"The appropriate safety stock depends on your demand variability and acceptable service level. Typically, this ranges from 1-4 weeks based on..."*
+**Example: Efficiency improvement in P2_constrained (377 tokens)**
+Constraints reduced token count by 55% while maintaining full accuracy.
 
 ---
 
@@ -79,31 +76,27 @@ After applying mitigations:
 
 ## 5. Quantitative Results
 
-### 5.1 Summary Metrics
+### 5.1 Summary Metrics (Gemini 2.0 Flash)
 
-| Variant | Accuracy (0-2) | Completeness (%) | Token Count | Issues |
-|---------|----------------|------------------|-------------|--------|
-| P1_direct | 1 | 50 | 220 | 3 |
-| P2_constrained | 2 | 75 | 180 | 1 |
-| P3_role_based | 2 | 85 | 320 | 2 |
-| P4_reasoning_step | 2 | 90 | 380 | 1 |
-| P5_context_first | 2 | 80 | 290 | 1 |
-
-*Note: Replace with actual experimental results*
+| Variant | Accuracy (0-2) | Completeness (%) | Token Count | Latency (ms) | Issues |
+|---------|----------------|------------------|-------------|--------------|--------|
+| P1_direct | 2 | 66.7 | 833 | 8,739 | 1 |
+| P2_constrained | 2 | 66.7 | 377 | 3,411 | 1 |
+| P3_role_based | 2 | 50.0 | 913 | 7,865 | 2 |
+| P4_reasoning_step | 2 | 66.7 | 915 | 7,346 | 2 |
+| P5_context_first | 2 | 50.0 | 919 | 7,646 | 2 |
 
 ### 5.2 Key Visualizations
 
-See `results/` folder for:
-- `accuracy_comparison.png` - Bar chart of accuracy scores
-- `radar_comparison.png` - Multi-metric radar chart
-- `token_efficiency.png` - Accuracy vs. token count trade-off
-- `issues_heatmap.png` - Failure behavior distribution
+![Accuracy Comparison](../results/accuracy_comparison.png)
+![Radar Chart](../results/radar_comparison.png)
+![Issues Heatmap](../results/issues_heatmap.png)
 
 ### 5.3 Trade-off Analysis
 
-**Best Accuracy + Completeness:** P4_reasoning_step  
-**Best Efficiency:** P2_constrained (highest accuracy per token)  
-**Best Balance:** P5_context_first (good scores across all metrics)
+**Most Efficient:** P2_constrained — 55% fewer tokens than naive prompts with equal accuracy  
+**Best Completeness:** P1, P2, P4 (tied at 66.7%)  
+**Most Issues:** P3, P4, P5 (2 issues each — over-elaboration + overconfidence/missing hedging)
 
 ---
 
@@ -130,16 +123,16 @@ User Query → Query Reformulation → Context Retrieval (RAG)
 ## 7. Conclusions and Recommendations
 
 ### Key Findings
-1. **Constrained prompts (P2) significantly improve focus** without sacrificing accuracy
-2. **Chain-of-Thought (P4) produces most complete responses** but with higher token cost
-3. **Context-first ordering (P5) is most extensible** to production RAG systems
-4. **Naive prompts (P1) consistently underperform** across all metrics
+1. **All prompt variants achieved high accuracy (2/2)** — Gemini 2.0 Flash handles supply chain queries well
+2. **Constrained prompts (P2) are most efficient** — 55% fewer tokens with same accuracy
+3. **Role-based and context-first prompts had lower completeness** — 50% vs 66.7%
+4. **Over-elaboration was the most common failure** — 4 of 5 variants exceeded 600 tokens
 
 ### Recommendations for Engineers
-1. **Always include constraints** for format and length
-2. **Use CoT for complex reasoning** tasks
-3. **Provide context before instruction** for domain-specific queries
-4. **Monitor for overconfidence** and hallucination markers
+1. **Always include constraints** — P2 proved most token-efficient
+2. **Use constraints over roles for efficiency** — P3 was verbose without accuracy gains
+3. **CoT prompting maintains completeness** — P4 matches P2 on completeness
+4. **Monitor for over-elaboration** — Add word limits to control response length
 
 ---
 
