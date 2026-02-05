@@ -1,0 +1,115 @@
+# LLM Lab: Prompt Engineering Project
+# Reproducibility Configuration File
+
+# ======================
+# Model Configuration
+# ======================
+models:
+  primary:
+    name: "gemini-2.0-flash"
+    provider: "google"
+    parameters:
+      temperature: 0.7
+      top_p: 0.95
+      max_output_tokens: 1024
+
+# ======================
+# Experiment Settings
+# ======================
+experiment:
+  domain: "supply_chain_optimization"
+  seed: 42
+  num_trials: 3  # Run each prompt variant multiple times
+
+# ======================
+# Sample Query
+# ======================
+query:
+  base: "How do I optimize inventory levels for a manufacturing facility with seasonal demand patterns?"
+  context: |
+    We are a mid-sized electronics manufacturer with:
+    - 500 SKUs across 3 product lines
+    - Demand peaks 40% higher in Q4 (holiday season)
+    - Current inventory turnover ratio of 4.5
+    - Warehouse capacity constraints of 10,000 square feet
+    - Lead time from suppliers averaging 6 weeks
+
+# ======================
+# Evaluation Checklist
+# ======================
+evaluation:
+  accuracy_criteria:
+    - "Mentions demand forecasting methods"
+    - "Addresses safety stock calculation"
+    - "Considers lead time impact"
+    - "Discusses reorder point strategies"
+    - "Accounts for seasonal adjustments"
+    - "Mentions inventory costs (holding, ordering, stockout)"
+  
+  completeness_checklist:
+    - "Demand analysis approach"
+    - "Inventory policy recommendation"
+    - "Quantitative formula or method"
+    - "Risk consideration"
+    - "Implementation steps"
+    - "Monitoring/KPI suggestions"
+
+# ======================
+# Prompt Variants
+# ======================
+prompts:
+  P1_direct:
+    name: "Direct/Naive"
+    description: "Simple question with no constraints or structure"
+    template: "{query}"
+  
+  P2_constrained:
+    name: "Constrained"
+    description: "Explicit constraints and format requirements"
+    template: |
+      {query}
+      
+      Requirements:
+      - Provide exactly 5 actionable recommendations
+      - Include at least one quantitative formula
+      - Keep response under 400 words
+      - Use bullet points for clarity
+  
+  P3_role_based:
+    name: "Role-Based"
+    description: "Assign expert persona to the model"
+    template: |
+      You are a senior supply chain consultant with 15 years of experience in manufacturing optimization. 
+      
+      A client asks: {query}
+      
+      Provide your professional recommendation based on industry best practices.
+  
+  P4_reasoning_step:
+    name: "Chain-of-Thought"
+    description: "Explicit step-by-step reasoning request"
+    template: |
+      {query}
+      
+      Think through this step-by-step:
+      1. First, analyze the key factors affecting inventory decisions
+      2. Then, identify the appropriate inventory model
+      3. Next, explain how to calculate optimal levels
+      4. Finally, provide implementation recommendations
+      
+      Show your reasoning for each step.
+  
+  P5_context_first:
+    name: "Context-First"
+    description: "Provide context before the question"
+    template: |
+      Context:
+      {context}
+      
+      Based on the above scenario, answer the following:
+      {query}
+      
+      Structure your response with:
+      - Analysis of current situation
+      - Recommended approach
+      - Expected outcomes
