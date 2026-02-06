@@ -1,6 +1,4 @@
 .env
 __pycache__/
 *.pyc
-results/*.json
-results/*.png
 .DS_Store

@@ -1,0 +1,263 @@
+{
+  "P1_direct": {
+    "accuracy": {
+      "score": 2,
+      "ratio": 1.0,
+      "matched_criteria": [
+        "Mentions demand forecasting methods",
+        "Addresses safety stock calculation",
+        "Considers lead time impact",
+        "Discusses reorder point strategies",
+        "Accounts for seasonal adjustments",
+        "Mentions inventory costs (holding, ordering, stockout)"
+      ],
+      "missing_criteria": []
+    },
+    "completeness": {
+      "percentage": 50.0,
+      "covered_items": [
+        "Demand analysis approach",
+        "Inventory policy recommendation",
+        "Quantitative formula or method"
+      ],
+      "missing_items": [
+        "Risk consideration",
+        "Implementation steps",
+        "Monitoring/KPI suggestions"
+      ]
+    },
+    "token_efficiency": {
+      "token_count": 851,
+      "word_count": 655,
+      "words_per_token": 0.77,
+      "efficiency_rating": "Verbose"
+    },
+    "failure_behaviors": {
+      "issues": [
+        {
+          "type": "Over-elaboration",
+          "description": "Response is 655 words, potentially too verbose",
+          "severity": "Low"
+        }
+      ],
+      "issue_count": 1,
+      "has_critical_issues": false
+    },
+    "clarity_score": 3,
+    "summary": {
+      "accuracy_score": 2,
+      "completeness_pct": 50.0,
+      "token_count": 851,
+      "issue_count": 1
+    }
+  },
+  "P2_constrained": {
+    "accuracy": {
+      "score": 2,
+      "ratio": 0.83,
+      "matched_criteria": [
+        "Mentions demand forecasting methods",
+        "Addresses safety stock calculation",
+        "Considers lead time impact",
+        "Accounts for seasonal adjustments",
+        "Mentions inventory costs (holding, ordering, stockout)"
+      ],
+      "missing_criteria": [
+        "Discusses reorder point strategies"
+      ]
+    },
+    "completeness": {
+      "percentage": 66.7,
+      "covered_items": [
+        "Demand analysis approach",
+        "Inventory policy recommendation",
+        "Quantitative formula or method",
+        "Risk consideration"
+      ],
+      "missing_items": [
+        "Implementation steps",
+        "Monitoring/KPI suggestions"
+      ]
+    },
+    "token_efficiency": {
+      "token_count": 339,
+      "word_count": 261,
+      "words_per_token": 0.77,
+      "efficiency_rating": "Moderate"
+    },
+    "failure_behaviors": {
+      "issues": [
+        {
+          "type": "Missing Uncertainty Language",
+          "description": "Response lacks hedging language for uncertain claims",
+          "severity": "Medium"
+        }
+      ],
+      "issue_count": 1,
+      "has_critical_issues": false
+    },
+    "clarity_score": 4,
+    "summary": {
+      "accuracy_score": 2,
+      "completeness_pct": 66.7,
+      "token_count": 339,
+      "issue_count": 1
+    }
+  },
+  "P3_role_based": {
+    "accuracy": {
+      "score": 2,
+      "ratio": 1.0,
+      "matched_criteria": [
+        "Mentions demand forecasting methods",
+        "Addresses safety stock calculation",
+        "Considers lead time impact",
+        "Discusses reorder point strategies",
+        "Accounts for seasonal adjustments",
+        "Mentions inventory costs (holding, ordering, stockout)"
+      ],
+      "missing_criteria": []
+    },
+    "completeness": {
+      "percentage": 66.7,
+      "covered_items": [
+        "Demand analysis approach",
+        "Inventory policy recommendation",
+        "Quantitative formula or method",
+        "Implementation steps"
+      ],
+      "missing_items": [
+        "Risk consideration",
+        "Monitoring/KPI suggestions"
+      ]
+    },
+    "token_efficiency": {
+      "token_count": 850,
+      "word_count": 654,
+      "words_per_token": 0.77,
+      "efficiency_rating": "Verbose"
+    },
+    "failure_behaviors": {
+      "issues": [
+        {
+          "type": "Over-elaboration",
+          "description": "Response is 654 words, potentially too verbose",
+          "severity": "Low"
+        }
+      ],
+      "issue_count": 1,
+      "has_critical_issues": false
+    },
+    "clarity_score": 4,
+    "summary": {
+      "accuracy_score": 2,
+      "completeness_pct": 66.7,
+      "token_count": 850,
+      "issue_count": 1
+    }
+  },
+  "P4_reasoning_step": {
+    "accuracy": {
+      "score": 2,
+      "ratio": 1.0,
+      "matched_criteria": [
+        "Mentions demand forecasting methods",
+        "Addresses safety stock calculation",
+        "Considers lead time impact",
+        "Discusses reorder point strategies",
+        "Accounts for seasonal adjustments",
+        "Mentions inventory costs (holding, ordering, stockout)"
+      ],
+      "missing_criteria": []
+    },
+    "completeness": {
+      "percentage": 50.0,
+      "covered_items": [
+        "Demand analysis approach",
+        "Inventory policy recommendation",
+        "Quantitative formula or method"
+      ],
+      "missing_items": [
+        "Risk consideration",
+        "Implementation steps",
+        "Monitoring/KPI suggestions"
+      ]
+    },
+    "token_efficiency": {
+      "token_count": 887,
+      "word_count": 683,
+      "words_per_token": 0.77,
+      "efficiency_rating": "Verbose"
+    },
+    "failure_behaviors": {
+      "issues": [
+        {
+          "type": "Over-elaboration",
+          "description": "Response is 683 words, potentially too verbose",
+          "severity": "Low"
+        }
+      ],
+      "issue_count": 1,
+      "has_critical_issues": false
+    },
+    "clarity_score": 5,
+    "summary": {
+      "accuracy_score": 2,
+      "completeness_pct": 50.0,
+      "token_count": 887,
+      "issue_count": 1
+    }
+  },
+  "P5_context_first": {
+    "accuracy": {
+      "score": 2,
+      "ratio": 1.0,
+      "matched_criteria": [
+        "Mentions demand forecasting methods",
+        "Addresses safety stock calculation",
+        "Considers lead time impact",
+        "Discusses reorder point strategies",
+        "Accounts for seasonal adjustments",
+        "Mentions inventory costs (holding, ordering, stockout)"
+      ],
+      "missing_criteria": []
+    },
+    "completeness": {
+      "percentage": 50.0,
+      "covered_items": [
+        "Demand analysis approach",
+        "Inventory policy recommendation",
+        "Quantitative formula or method"
+      ],
+      "missing_items": [
+        "Risk consideration",
+        "Implementation steps",
+        "Monitoring/KPI suggestions"
+      ]
+    },
+    "token_efficiency": {
+      "token_count": 894,
+      "word_count": 688,
+      "words_per_token": 0.77,
+      "efficiency_rating": "Verbose"
+    },
+    "failure_behaviors": {
+      "issues": [
+        {
+          "type": "Over-elaboration",
+          "description": "Response is 688 words, potentially too verbose",
+          "severity": "Low"
+        }
+      ],
+      "issue_count": 1,
+      "has_critical_issues": false
+    },
+    "clarity_score": 4,
+    "summary": {
+      "accuracy_score": 2,
+      "completeness_pct": 50.0,
+      "token_count": 894,
+      "issue_count": 1
+    }
+  }
+}
