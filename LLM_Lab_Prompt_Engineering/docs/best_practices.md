@@ -4,7 +4,7 @@
 
 ---
 
-## 🎯 Core Principles
+## 🎯 Core Principlesv 
 
 | Principle | Why It Matters | How to Apply |
 |-----------|----------------|--------------|
